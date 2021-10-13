@@ -1,0 +1,12 @@
+server:
+  port: 8080
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7003/eureka
+feign:
+  hystrix:
+    # 在feign中开启Hystrix
+    enabled: true

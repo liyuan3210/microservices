@@ -1,0 +1,21 @@
+server:
+  port: 3111
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    zookeeper:
+      # 默认localhost:2181
+      connect-string: 172.18.1.12:2181
+    config:
+      label: master # 分支名称
+      name: config #配置文件名称
+      profile: dev # 读取的后缀，上述三个综合，为master分支上的config-dev.yml的配置文件被读取，http://config-3344.com:3344/master/config-dev.yml
+      uri: http://127.0.0.1:3344 #配置中心的地址
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

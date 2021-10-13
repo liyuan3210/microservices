@@ -1,0 +1,19 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-server
+  cloud:
+    zookeeper:
+      # 默认localhost:2181
+      connect-string: 172.18.1.12:2181
+    config:
+      server:
+        git:
+          # 地址要写成当前系统命令行能拉取的uri
+          #uri: git@mygithub:liyuan3210/springcloud-config.git
+          uri: https://github.com/liyuan3210/cloud_config.git
+          search-paths:
+            - cloud_config
+      label: master
