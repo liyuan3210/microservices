@@ -3,6 +3,7 @@ package com.liyuan3210.springcloud.hystrix.controller;
 import com.liyuan3210.springcloud.hystrix.service.PaymentHystrixService;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,13 +38,19 @@ public class OrderHystrixController {
      * @return
      */
     @GetMapping("/consumer/payment/hystrix/timeout/{id}")
-    /*@HystrixCommand(fallbackMethod = "paymentTimeOutFallbackMethod", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
-    })*/
+    @HystrixCommand(fallbackMethod = "paymentTimeOutFallbackMethod", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+    })
 //    @HystrixCommand
     public String paymentInfo_TimeOut(@PathVariable("id") Integer id) {
         //int age = 10/0;
-        return paymentHystrixService.paymentInfo_TimeOut(id);
+        String result = null;
+        try{
+            result = paymentHystrixService.paymentInfo_TimeOut(id);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
     }
 
     /**
