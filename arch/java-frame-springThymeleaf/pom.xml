@@ -1,0 +1,135 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>java</groupId>
+  <artifactId>thymeleaf-bootstrap</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>thymeleaf-bootstrap</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <!-- Inherit defaults from Spring Boot -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.6.RELEASE</version>
+    </parent>
+
+  <dependencies>
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-web</artifactId>
+          <version>1.5.6.RELEASE</version>
+      </dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-thymeleaf</artifactId>
+	</dependency>
+      <!-- mysql jdbc -->
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-jdbc</artifactId>
+          <version>1.5.6.RELEASE</version>
+      </dependency>
+      <dependency>
+	      <groupId>mysql</groupId>
+	      <artifactId>mysql-connector-java</artifactId>
+	      <version>5.1.39</version>
+      </dependency>
+		<!-- 引入Swagger2的依赖 
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger2</artifactId>
+		    <version>2.4.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger-ui</artifactId>
+			    <version>2.4.0</version>
+			</dependency>
+			-->
+	  </dependencies>
+	   <!-- Package as an executable jar -->
+	    <build>
+	    <finalName>thymeleaf-bootstrap</finalName>
+        <resources>
+        	<resource>
+                <directory>src/main/java</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+            	<directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <!--  过滤转码 
+            <resource>
+                <directory>resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                	<exclude>static/js/bootstrap/fonts/**</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                	<include>static/js/bootstrap/fonts/**</include>
+                </includes>
+            </resource> -->
+        </resources>
+        <plugins>
+	        <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-resources-plugin</artifactId>
+	                <!--  过滤转码 -->
+	                <configuration>
+	                    <nonFilteredFileExtensions>
+	                      
+	                        <nonFilteredFileExtension>xls</nonFilteredFileExtension>
+	                        <nonFilteredFileExtension>rar</nonFilteredFileExtension>
+							<nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+							<nonFilteredFileExtension>woff</nonFilteredFileExtension>
+							<nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+							<nonFilteredFileExtension>eot</nonFilteredFileExtension>
+							<nonFilteredFileExtension>svg</nonFilteredFileExtension>
+	                    </nonFilteredFileExtensions>
+	                </configuration>
+	            </plugin>
+            <!-- spring maven插件 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 打包插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.2</version>
+			</plugin>
+            <!-- 编译项目插件 -->
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-compiler-plugin</artifactId>  
+                <version>3.8.1</version>  
+                <configuration>  
+                    <source>1.8</source>  
+                    <target>1.8</target>  
+                    <encoding>UTF-8</encoding>  
+                </configuration>  
+            </plugin> 
+        </plugins>
+    </build>
+</project>

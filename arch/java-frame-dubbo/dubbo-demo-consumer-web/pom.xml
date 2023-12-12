@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.1.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.liyuan3210</groupId>
+	<artifactId>dubbo-demo-consumer-web</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>dubbo-demo-consumer-web</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+    	<dubbo.version>2.7.6</dubbo.version>
+	</properties>
+	<!-- 
+	<dependencyManagement>
+	    <dependencies>
+	        <dependency>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-dependencies</artifactId>
+	            <version>${spring-boot.version}</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	
+	        <dependency>
+	            <groupId>org.apache.dubbo</groupId>
+	            <artifactId>dubbo-dependencies-bom</artifactId>
+	            <version>${dubbo.version}</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	      
+	    </dependencies>
+	</dependencyManagement>
+ 	-->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.liyuan3210</groupId>
+			<artifactId>dubbo-demo-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- Dubbo Spring Boot Starter -->
+	    <dependency>
+	        <groupId>org.apache.dubbo</groupId>
+	        <artifactId>dubbo-spring-boot-starter</artifactId>
+	        <version>${dubbo.version}</version>
+	    </dependency> 
+		<!-- 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency> -->
+	</dependencies>
+	
+	<!-- 
+	If your project failed to resolve the dependency, try to add the following repository:
+	
+	<repositories>
+	    <repository>
+	        <id>apache.snapshots.https</id>
+	        <name>Apache Development Snapshot Repository</name>
+	        <url>https://repository.apache.org/content/repositories/snapshots</url>
+	        <releases>
+	            <enabled>false</enabled>
+	        </releases>
+	        <snapshots>
+	            <enabled>true</enabled>
+	        </snapshots>
+	    </repository>
+	</repositories>
+	 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,1 @@
+document.getElementById("notice").innerHTML="动态js改变";

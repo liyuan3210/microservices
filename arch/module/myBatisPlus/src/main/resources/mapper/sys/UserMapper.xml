@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liyuan3210.demo.myBatisPlus.sys.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liyuan3210.demo.myBatisPlus.sys.entity.User">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+        <result column="email" property="email" />
+    </resultMap>
+
+    <select id="queryPage" resultType="com.liyuan3210.demo.myBatisPlus.sys.entity.User">
+        SELECT * FROM tb_user
+        <where>
+            <if test="userDto.name != null and userDto.name != ''">
+                and name = #{userDto.name}
+            </if>
+            <if test="userDto.age != null and userDto.age != ''">
+                and age = #{userDto.age}
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+</mapper>
